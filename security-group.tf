@@ -2,6 +2,7 @@
 resource "aws_security_group" "allow_mongodb" {
   name        = "roboshop-${var.ENV}-mongodb-sg"
   description = "Allow MOngodb internal inbound traffic"
+  vpc_id = data.terraform_remote_state.vpc.outputs.VPC_ID
 
   # Inbound rules
   ingress {
