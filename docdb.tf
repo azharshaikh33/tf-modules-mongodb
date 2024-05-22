@@ -1,6 +1,6 @@
-resource "aws_docdb_cluster" "docdb" {
-  cluster_identifier = "roboshop-${var.ENV}-docdb"
-}
+# resource "aws_docdb_cluster" "docdb" {
+#   cluster_identifier = "roboshop-${var.ENV}-docdb"
+# }
 
 resource "aws_docdb_cluster" "docdb" {
   cluster_identifier      = "roboshop-${var.ENV}-docdb"
