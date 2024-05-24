@@ -1,5 +1,7 @@
 resource "null_resource" "schema" {
 
+    depends_on = [aws_docdb_cluster.docdb]
+
   provisioner "local-exec" {
     command = <<EOF
     cd /tmp
@@ -7,8 +9,8 @@ resource "null_resource" "schema" {
     unzip -o mongodb.zip
     cd mongodb-main
     wget 
-    mongo --ssl --host ${aws_docdb_cluster.docdb.endpoint} -- sslCAFile rds-combined-ca-bundle.pem --username admin1 --password roboshop1 < catalogue.js
-    mongo --ssl --host ${aws_docdb_cluster.docdb.endpoint} -- sslCAFile rds-combined-ca-bundle.pem --username admin1 --password roboshop1 < users.js
+    mongo --ssl --host ${aws_docdb_cluster.docdb.endpoint} --sslCAFile rds-combined-ca-bundle.pem --username admin1 --password roboshop1 < catalogue.js
+    mongo --ssl --host ${aws_docdb_cluster.docdb.endpoint} --sslCAFile rds-combined-ca-bundle.pem --username admin1 --password roboshop1 < users.js
     EOF
   }
 }
