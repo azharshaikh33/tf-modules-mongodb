@@ -9,8 +9,8 @@ resource "null_resource" "schema" {
     unzip -o mongodb.zip
     cd mongodb-main
     wget https://truststore.pki.rds.amazonaws.com/global/global-bundle.pem 
-    mongo --ssl --host ${aws_docdb_cluster.docdb.endpoint} --sslCAFile global-bundle.pem --username admin1 --password roboshop1 < catalogue.js
-    mongo --ssl --host ${aws_docdb_cluster.docdb.endpoint} --sslCAFile global-bundle.pem --username admin1 --password roboshop1 < users.js
+    mongo --ssl --host ${aws_docdb_cluster.docdb.endpoint} --tlsCAFile global-bundle.pem --username admin1 --password roboshop1 < catalogue.js
+    mongo --ssl --host ${aws_docdb_cluster.docdb.endpoint} --tlsCAFile global-bundle.pem --username admin1 --password roboshop1 < users.js
     EOF
   }
 }
