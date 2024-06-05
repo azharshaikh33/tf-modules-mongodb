@@ -7,8 +7,8 @@ resource "aws_security_group" "allow_mongodb" {
   # Inbound rules
   ingress {
     description = "Allow Docdb from local network"
-    from_port   = var.DOCDB_PORT
-    to_port     = var.DOCDB_PORT
+    from_port   = 0
+    to_port     = 0
     protocol    = "tcp"
     cidr_blocks = [data.terraform_remote_state.vpc.outputs.DEFAULT_VPC_CIDR, data.terraform_remote_state.vpc.outputs.VPC_CIDR]
   }
