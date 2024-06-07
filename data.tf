@@ -13,5 +13,5 @@ data "aws_secretsmanager_secret" "secrets" {
 }
 
 data "aws_secretsmanager_secret_version" "secrets" {
-  secret_id     = "arn:aws:secretsmanager:us-east-1:992382483280:secret:roboshop1/secrets-CZGt0N"
+  secret_id     = data.aws_secretsmanager_secret.secrets.id
 }
